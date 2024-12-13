@@ -1,4 +1,4 @@
-from utils import (get_input)
+from utils import get_input
 from time import perf_counter as perf_counter
 from typing import Any
 import itertools
@@ -17,12 +17,15 @@ def profiler(method):
 
 @profiler
 def main():
-    line = get_input('day9')[0]
+    line = get_input("day9")[0]
     s = 0
     files = []
     spaces = []
     j = 0
-    for file, space in [(int(line[i]), 0 if (i == len(line) - 1) else int(line[i + 1])) for i in range(0, len(line), 2)]:
+    for file, space in [
+        (int(line[i]), 0 if (i == len(line) - 1) else int(line[i + 1]))
+        for i in range(0, len(line), 2)
+    ]:
         files.append((j, file))
         j += file
         if space > 0:

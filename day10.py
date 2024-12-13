@@ -1,4 +1,4 @@
-from utils import (get_input)
+from utils import get_input
 from time import perf_counter as perf_counter
 from typing import Any
 import itertools
@@ -25,8 +25,12 @@ def profiler(method):
 
 @profiler
 def main():
-    topo = [[-1 if c == '.' else int(c) for c in line] for line in get_input('day10test')]
-    starts = [(i, j) for i in range(len(topo)) for j in range(len(topo[i])) if topo[i][j] == 0]
+    topo = [
+        [-1 if c == "." else int(c) for c in line] for line in get_input("day10test")
+    ]
+    starts = [
+        (i, j) for i in range(len(topo)) for j in range(len(topo[i])) if topo[i][j] == 0
+    ]
     print(sum(len(bfs(start, 0, topo)) for start in starts))
 
 
@@ -36,9 +40,14 @@ def bfs(pos, height, graph):
     s = set()
     for d in dirs:
         n_pos = (pos[0] + d[0], pos[1] + d[1])
-        if 0 <= n_pos[0] < len(graph) and 0 <= n_pos[1] < len(graph[0]) and graph[n_pos[0]][n_pos[1]] == height + 1:
-            s |= bfs(n_pos, height+1, graph)
+        if (
+            0 <= n_pos[0] < len(graph)
+            and 0 <= n_pos[1] < len(graph[0])
+            and graph[n_pos[0]][n_pos[1]] == height + 1
+        ):
+            s |= bfs(n_pos, height + 1, graph)
     return s
+
 
 if __name__ == "__main__":
     main()

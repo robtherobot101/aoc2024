@@ -93,7 +93,6 @@ def flood_fill(garden, visited, c, pos):
                     or garden[pos[0] + n[0]][pos[1] + n[1]] != c
                 )
             ):
-                print(True)
                 s += 1
     return a, s
 

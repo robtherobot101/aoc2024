@@ -1,8 +1,8 @@
-from utils import (get_input)
+from utils import get_input
 
 
 def main():
-    lines = get_input('input1_0')
+    lines = get_input("input1_0")
     a = [int(line.split(" ")[0]) for line in lines]
     b = [int(line.split(" ")[-1]) for line in lines]
 

@@ -1,8 +1,9 @@
-from utils import (get_input)
+from utils import get_input
 from time import perf_counter as perf_counter
 from typing import Any
 import itertools
 import operator
+
 
 def profiler(method):
     def wrapper_method(*args: Any, **kwargs: Any) -> Any:
@@ -16,7 +17,7 @@ def profiler(method):
 
 @profiler
 def main():
-    lines = [[c for c in line] for line in get_input('input8')]
+    lines = [[c for c in line] for line in get_input("input8")]
     antennae = {}
     antinodes = set()
 
@@ -30,13 +31,14 @@ def main():
             a1 = (a[0] - (b[0] - a[0]), a[1] - (b[1] - a[1]))
             a2 = (a[0] + 2 * (b[0] - a[0]), a[1] + 2 * (b[1] - a[1]))
             if 0 <= a1[0] < len(lines) and 0 <= a1[1] < len(lines[0]):
-                lines[a1[0]][a1[1]] = '#'
+                lines[a1[0]][a1[1]] = "#"
                 antinodes.add(a1)
             if 0 <= a2[0] < len(lines) and 0 <= a2[1] < len(lines[0]):
-                lines[a2[0]][a2[1]] = '#'
+                lines[a2[0]][a2[1]] = "#"
                 antinodes.add(a2)
     print(len(antinodes))
-    print('\n'.join(''.join(y for y in x) for x in lines))
+    print("\n".join("".join(y for y in x) for x in lines))
+
 
 if __name__ == "__main__":
     main()

@@ -1,9 +1,10 @@
-from utils import (get_input)
+from utils import get_input
 import itertools
 
+
 def main():
-    lines = iter(get_input('input5_0'))
-    rules = list(itertools.takewhile(lambda x: x!= "", lines))
+    lines = iter(get_input("input5_0"))
+    rules = list(itertools.takewhile(lambda x: x != "", lines))
     updates = list(lines)
 
     r = {}
@@ -13,7 +14,7 @@ def main():
 
     s = 0
     for update in updates:
-        update  = [int(x) for x in update.split(",")]
+        update = [int(x) for x in update.split(",")]
         seen = []
         for n in update:
             if any(x in r.get(n, []) for x in seen):
@@ -23,10 +24,6 @@ def main():
             s += update[(len(update) // 2)]
 
     print(s)
-
-
-
-
 
 
 if __name__ == "__main__":

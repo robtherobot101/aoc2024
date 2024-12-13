@@ -29,7 +29,9 @@ def main():
                 )
             )
         )
-        p = mpmath.matrix([int(x) + 10000000000000 for x in re.findall(r"=(\d+)", next(lines))])
+        p = mpmath.matrix(
+            [int(x) + 10000000000000 for x in re.findall(r"=(\d+)", next(lines))]
+        )
 
         x, y = mpmath.qr_solve(a, p)[0]
 
