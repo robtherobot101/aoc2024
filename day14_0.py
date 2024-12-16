@@ -3,6 +3,7 @@ from time import perf_counter as perf_counter
 from typing import Any
 import re
 
+
 def profiler(method):
     def wrapper_method(*args: Any, **kwargs: Any) -> Any:
         t = perf_counter()
@@ -21,7 +22,7 @@ def main():
     s = [[0, 0], [0, 0]]
 
     for line in lines:
-        x, y, x_speed, y_speed = [int(x) for x in re.findall(r'(-?\d+)', line)]
+        x, y, x_speed, y_speed = [int(x) for x in re.findall(r"(-?\d+)", line)]
         # print(f"{x}, {y}, {x_speed}, {y_speed}")
         x = (x + x_speed * 100) % X
         y = (y + y_speed * 100) % Y
@@ -33,8 +34,6 @@ def main():
             s[ax][ay] += 1
     print(s)
     print(s[0][0] * s[0][1] * s[1][0] * s[1][1])
-
-
 
 
 if __name__ == "__main__":
